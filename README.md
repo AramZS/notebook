@@ -1,9 +1,9 @@
 ---
-aliases: ['Note Publisher', 'NotePub', 'NotePublisher']
+aliases: ['Note Publisher', 'NotePub', 'NotePublisher', 'Notebook']
 public: true
 ---
 
-# Notebook - A site for note publishing
+# Notebook
 
 tags:: #fellowship-of-the-link #six-tools 
 up:: [[FellowhipOfTheLink|Fellowship of the Link]] [[shared-notes-across-six-tools|Shared Notes Across Six Tools]]
@@ -20,6 +20,7 @@ A tool to publish those notes here that are intended to be public facing.
 - `go:` This link are part of how we define this page
 - `isBasedOn:` This page is a direct other page and should be considered a replica or summary of that page. 
 - `date:` intended publishing time. 
+- `aliases:` YAML list of other ways to refer to this page besides filename. 
 
 ### Folder Structure 
 
@@ -43,6 +44,8 @@ A tool to publish those notes here that are intended to be public facing.
 	- `#go/node/header/hashtag-or-node` will construct URLs based on header of the target node or the node itself. 
 	- Read up: 
 		- [On go links | Flancia](https://flancia.org/mine/go-links/)
+			- [agora-server/db.py at main · flancian/agora-server · GitHub](https://github.com/flancian/agora-server/blob/main/app/db.py#L658)
+			- [agora-server/db.py at main · flancian/agora-server · GitHub](https://github.com/flancian/agora-server/blob/main/app/db.py#L266)
 		- [GoLinks® | Intuitive link management platform for teams](https://www.golinks.io/)
 		- [Trotto - Open-Source Go Links](https://www.trot.to/)
 			- [GitHub - trotto/browser-extension: A browser extension that makes the "go/" hostname work for any go links implementation. Built for easy self-hosting.](https://github.com/trotto/browser-extension)
