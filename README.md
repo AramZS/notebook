@@ -5,7 +5,8 @@ public: true
 
 # Notebook - A site for note publishing
 
-Repo where my live public-facing notebook lives.
+tags:: #fellowship-of-the-link #six-tools 
+up:: [[FellowhipOfTheLink|Fellowship of the Link]] [[shared-notes-across-six-tools|Shared Notes Across Six Tools]]
 
 A tool to publish those notes here that are intended to be public facing. 
 
@@ -14,7 +15,7 @@ A tool to publish those notes here that are intended to be public facing.
 ### YAML
 
 - `define:` Show the Wikipedia definition 
-- `public:` This note is intended to be published. No note will be published without it 
+- `public:` This note is intended to be published. No note will be published without it being true
 - `mainlink:` This note is referring to a URL as its primary subject. 
 - `go:` This link are part of how we define this page
 - `isBasedOn:` This page is a direct other page and should be considered a replica or summary of that page. 
@@ -39,6 +40,14 @@ A tool to publish those notes here that are intended to be public facing.
 	- Should resolve to: aliases, titles, filenames minus `.md`, filenames minus folder structure if none remain. 
 	- If no target page, create a page with the wikipedia definition 
 - `#go url` This link are part of how we define this page
+	- `#go/node/header/hashtag-or-node` will construct URLs based on header of the target node or the node itself. 
+	- Read up: 
+		- [On go links | Flancia](https://flancia.org/mine/go-links/)
+		- [GoLinks® | Intuitive link management platform for teams](https://www.golinks.io/)
+		- [Trotto - Open-Source Go Links](https://www.trot.to/)
+			- [GitHub - trotto/browser-extension: A browser extension that makes the "go/" hostname work for any go links implementation. Built for easy self-hosting.](https://github.com/trotto/browser-extension)
+		- `/f/` links on previous sites. 
+		- Volunteer `go` links to the community. 
 - `#pull url` This is a form of transclusion - it will result in pulling the passed resources or nodes into the resource in an embedded way (iframe maybe? archive?). This is an include-style statement. 
 - `#calendar url` A calendar link for an event. 
 - `#date datetime` An event datetime. 
@@ -51,6 +60,11 @@ A tool to publish those notes here that are intended to be public facing.
 	- If this page is *only* a single link, consider that link to be the same as `isBasedOn`
 - Pull in archive somehow? `#pull` creates an archive? 
 - Pull in any public Google Doc as text for the page? 
+- Establish list of sources 
+	- Where those sources have url/matched-path - pull that source in as a link and potentially a node for the matched path on my own site. 
+	- Can also establish a source name and use it as a path/selector: `[@rel8/foo]` where `@` points to a listing in the `sources` list. 
+	- Agora source links: [agora/sources.yaml at master · flancian/agora · GitHub](https://github.com/flancian/agora/blob/master/sources.yaml)
+	- Establish a URL resolution alias file for internal/external use? 
 
 ## Outputs 
 
