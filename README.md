@@ -55,12 +55,14 @@ A tool to publish those notes here that are intended to be public facing.
 - `#calendar url` A calendar link for an event. 
 - `#date datetime` An event datetime. 
 - `#push nodename` Will push the `push` directive and anything listed underneath it in `li` elements to `nodename`.
+- public block.
 
 ## Interlinked
 
 - Includes Context.center links as sources, adds them as searchable.
 - Creates pages from Linked terms with a list of links that match that term. 
 	- If this page is *only* a single link, consider that link to be the same as `isBasedOn`
+- Links should include checking for `-` and `_` versions of the link.
 - Pull in archive somehow? `#pull` creates an archive? 
 - Pull in any public Google Doc as text for the page? 
 - Establish list of sources 
