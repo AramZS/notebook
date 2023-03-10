@@ -257,6 +257,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3f9eec918d3f24069decb9af1554cad7c880e2da24a9afd88aca000531ab82c1"
 
 [[package]]
+name = "frontmatter"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8fc799a66fc39c6d56fa3bdc8afc1fd7efa8ebff71f4ff091596faffb96c84fa"
+dependencies = [
+ "yaml-rust",
+]
+
+[[package]]
 name = "generic-array"
 version = "0.14.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -395,6 +404,7 @@ name = "notebox"
 version = "0.1.0"
 dependencies = [
  "comrak",
+ "frontmatter",
  "pulldown-cmark",
 ]
 
