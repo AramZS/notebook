@@ -88,6 +88,11 @@ fn main() {
     // format_commonmark(&root, &options, &mut html);
     // let yaml_test_result = String::from_utf8(html).unwrap();
     let yaml_test_result = frontmatter::parse(markdown_input);
-    dbg!(yaml_test_result);
+    // dbg!(yaml_test_result);
+    assert!(yaml_test_result.is_ok() && !yaml_test_result.is_err());
+    let someYaml = yaml_test_result.unwrap();
+    // yaml_test_result.and_then(|i| dbg!(i));
+    dbg!(someYaml.unwrap());
+
     //println!("\nProcessed File HTML output:\n{}", yaml_test_result);
 }
