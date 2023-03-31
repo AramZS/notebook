@@ -406,6 +406,7 @@ dependencies = [
  "comrak",
  "frontmatter",
  "pulldown-cmark",
+ "yaml-rust",
 ]
 
 [[package]]

@@ -6,6 +6,7 @@ use comrak::{
 use std::fs;
 use std::mem::ManuallyDrop;
 use std::sync::{Arc, Mutex};
+use yaml_rust::{YamlEmitter, YamlLoader};
 
 fn main() {
     let file_contents: String =
@@ -101,12 +102,18 @@ fn main() {
     dbg!(String::from_utf8(html).unwrap());
 
     // let yaml_test_result = String::from_utf8(html).unwrap();
+    // alternatives - https://stackoverflow.com/questions/53243795/how-do-you-read-a-yaml-file-in-rust
     let yaml_test_result = frontmatter::parse(markdown_input);
     // dbg!(yaml_test_result);
     assert!(yaml_test_result.is_ok() && !yaml_test_result.is_err());
+    // Understand the object - https://docs.rs/yaml-rust/latest/yaml_rust/
     let some_yaml = yaml_test_result.unwrap();
+    let yamlObj = some_yaml.unwrap();
+    //let mut emitter = YamlEmitter::new(&mut out_str);
     // yaml_test_result.and_then(|i| dbg!(i));
-    dbg!(some_yaml.unwrap());
+    dbg!(&yamlObj);
+    dbg!(&yamlObj["aliases"]);
+    dbg!(&yamlObj["public"]);
 
     //println!("\nProcessed File HTML output:\n{}", yaml_test_result);
 }
