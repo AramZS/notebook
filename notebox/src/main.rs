@@ -5,6 +5,7 @@ use comrak::{
 };
 use std::fs;
 use std::mem::ManuallyDrop;
+use std::sync::{Arc, Mutex};
 
 fn main() {
     let file_contents: String =
@@ -21,9 +22,9 @@ fn main() {
     // The "root" node, which we parse our markdown into
     let root = parse_document(&arena, &file_contents, options);
     // hold a value found during an iteration function
-
-    let option_to_hold_file = ManuallyDrop::new(bool::default());
-    let mut yaml_options;
+    // https://stackoverflow.com/questions/30559073/cannot-borrow-captured-outer-variable-in-an-fn-closure-as-mutable
+    let option_to_hold_file = Arc::new(Mutex::new(bool::default()));
+    //let mut yaml_options = ManuallyDrop::new(Vec::new());
     // Iterate through the nodes (and their children) recursively
     // We pass the node to the callback provided as the second function param
     fn iter_nodes<'a, F>(node: &'a AstNode<'a>, f: &F)
@@ -58,8 +59,9 @@ fn main() {
                 );
                 // let replace_result = std::mem::replace(block, block.to_vec());
                 //*block = vec![];
+                //std::mem::replace(yaml_options, block);
                 let _ = std::mem::replace(block, vec![]);
-                *option_to_hold_file = true;
+                option_to_hold_file.lock().unwrap().clone_from(&true);
                 dbg!(block);
                 // let raw_frontmatter = String::from_utf8(block.to_vec())
                 //    .expect("Couldn't parse frontmatter into string.");
@@ -87,7 +89,8 @@ fn main() {
             _ => (),
         }
     });
-    dbg!(option_to_hold_file);
+
+    dbg!(option_to_hold_file.lock().unwrap().clone());
     let file_result = markdown_to_html(markdown_input, options);
     println!("\nFile HTML output:\n{}", file_result);
     // let file_output_result;
