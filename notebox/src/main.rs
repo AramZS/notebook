@@ -20,6 +20,9 @@ fn main() {
     options.extension.front_matter_delimiter = Some("---".to_string());
     // The "root" node, which we parse our markdown into
     let root = parse_document(&arena, &file_contents, options);
+    // hold a value found during an iteration function
+
+    let hold_file = ManuallyDrop::new(bool::default());
     // Iterate through the nodes (and their children) recursively
     // We pass the node to the callback provided as the second function param
     fn iter_nodes<'a, F>(node: &'a AstNode<'a>, f: &F)
@@ -43,7 +46,7 @@ fn main() {
                 // println!("Line break")
             }
             NodeValue::Item(ref mut blocks) => {
-                std::mem::drop(blocks);
+                // std::mem::drop(blocks);
                 // std::mem::replace(blocks, vec![]); // Zeroing this out requires changing the type.
                 // dbg!(blocks);
             }
@@ -52,9 +55,12 @@ fn main() {
                     "Frontmatter: {}",
                     String::from_utf8(block.to_vec()).unwrap()
                 );
-                let replace_result = std::mem::replace(block, block.to_vec());
-                let raw_frontmatter = String::from_utf8(block.to_vec())
-                    .expect("Couldn't parse frontmatter into string.");
+                // let replace_result = std::mem::replace(block, block.to_vec());
+                //*block = vec![];
+                let _ = std::mem::replace(block, vec![]);
+                dbg!(block);
+                // let raw_frontmatter = String::from_utf8(block.to_vec())
+                //    .expect("Couldn't parse frontmatter into string.");
             }
             &mut NodeValue::CodeBlock(ref mut block) => {
                 // std::mem::drop(block);
@@ -80,19 +86,22 @@ fn main() {
         }
     });
 
-    let file_result = markdown_to_html(markdown_input, &ComrakOptions::default());
+    let file_result = markdown_to_html(markdown_input, options);
     println!("\nFile HTML output:\n{}", file_result);
     // let file_output_result;
     // dbg!(root);
-    // let mut html = vec![];
-    // format_commonmark(&root, &options, &mut html);
+    let mut html = vec![];
+    format_commonmark(&root, &options, &mut html);
+    //println!("\nFile commanmark output:\n{}", html);
+    dbg!(String::from_utf8(html).unwrap());
+
     // let yaml_test_result = String::from_utf8(html).unwrap();
     let yaml_test_result = frontmatter::parse(markdown_input);
     // dbg!(yaml_test_result);
     assert!(yaml_test_result.is_ok() && !yaml_test_result.is_err());
-    let someYaml = yaml_test_result.unwrap();
+    let some_yaml = yaml_test_result.unwrap();
     // yaml_test_result.and_then(|i| dbg!(i));
-    dbg!(someYaml.unwrap());
+    dbg!(some_yaml.unwrap());
 
     //println!("\nProcessed File HTML output:\n{}", yaml_test_result);
 }
