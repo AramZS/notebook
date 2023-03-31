@@ -22,7 +22,8 @@ fn main() {
     let root = parse_document(&arena, &file_contents, options);
     // hold a value found during an iteration function
 
-    let hold_file = ManuallyDrop::new(bool::default());
+    let option_to_hold_file = ManuallyDrop::new(bool::default());
+    let mut yaml_options;
     // Iterate through the nodes (and their children) recursively
     // We pass the node to the callback provided as the second function param
     fn iter_nodes<'a, F>(node: &'a AstNode<'a>, f: &F)
@@ -58,6 +59,7 @@ fn main() {
                 // let replace_result = std::mem::replace(block, block.to_vec());
                 //*block = vec![];
                 let _ = std::mem::replace(block, vec![]);
+                *option_to_hold_file = true;
                 dbg!(block);
                 // let raw_frontmatter = String::from_utf8(block.to_vec())
                 //    .expect("Couldn't parse frontmatter into string.");
@@ -85,7 +87,7 @@ fn main() {
             _ => (),
         }
     });
-
+    dbg!(option_to_hold_file);
     let file_result = markdown_to_html(markdown_input, options);
     println!("\nFile HTML output:\n{}", file_result);
     // let file_output_result;
