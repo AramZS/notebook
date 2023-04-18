@@ -15,9 +15,13 @@ A tool to publish those notes here that are intended to be public facing.
 ### YAML
 
 - `define:` Show the Wikipedia definition 
-- `public:` This note is intended to be published. No note will be published without it being true
+- `public:` This note is intended to be published. 
+	- Notes marked `false` or with no value will never have any part published. 
+	- Notes marked `true` will have their whole body published along with metadata. 
+	- Notes marked `partial-public` will have any `:::{public} content :::` content blocks published and no metadata other than title. 
+	- Notes marked `partial-private` will have all content except for `:::{private} content :::` content blocks published and all metadata. 
 - `mainlink:` This note is referring to a URL as its primary subject. 
-- `go:` This link are part of how we define this page
+- `go:` This link defines the page, it is intended to be a forwarding link. 
 - `isBasedOn:` This page is a direct other page and should be considered a replica or summary of that page. 
 - `date:` intended publishing time. 
 - `aliases:` YAML list of other ways to refer to this page besides filename. 
@@ -34,6 +38,7 @@ A tool to publish those notes here that are intended to be public facing.
 - `up::` hierarchy that indicates this page should be considered a child of the listed pages and that the `up` pages can list the `down` pages. 
 - `down::` hierarchy that indicates this page should be considered a parent of the listed pages. 
 - `include::` Comma separated URL link of passed resources to be embedded at the end of the current link. 
+- `circle::` Peer pages that are associated but not hierartical. Order is irrelevant, but alphabetical is assumed.  
 
 ## Conventions 
 
@@ -55,7 +60,11 @@ A tool to publish those notes here that are intended to be public facing.
 - `#calendar url` A calendar link for an event. 
 - `#date datetime` An event datetime. 
 - `#push nodename` Will push the `push` directive and anything listed underneath it in `li` elements to `nodename`.
-- public block.
+- `:::{blocktype} content :::` designates special content blocks where the content is ` content ` in that example. The block can be multiline or single line. See: [MyST Markdown overview](https://datascientistforai.github.io/DataScienceStudy/content/myst.html#content-myst-directives)
+- `|/` Indicates a Decision. 
+- `- [ ]` Indicates a ToDo.
+  - `#todo` before a block of `- [ ]` indicates globally visible ToDos. 
+- Any item in the `/f/` folder at the base of the notes source is intended to be a forwarding link and should have a `go` directive in its YAML. 
 
 ## Interlinked
 
