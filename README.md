@@ -25,6 +25,8 @@ A tool to publish those notes here that are intended to be public facing.
 - `isBasedOn:` This page is a direct other page and should be considered a replica or summary of that page. 
 - `date:` intended publishing time. 
 - `aliases:` YAML list of other ways to refer to this page besides filename. 
+- `republish:` Designate a YAML list of TLDs or source list names which you wish to republish to. Processing of a republish event is up to the receiving site and may be an entirely new page or the absorption of the page into an existing page, or a denial. 
+- `tags:`  to add keywords in a YAML list.  
 
 ### Folder Structure 
 
@@ -38,7 +40,7 @@ A tool to publish those notes here that are intended to be public facing.
 - `up::` hierarchy that indicates this page should be considered a child of the listed pages and that the `up` pages can list the `down` pages. 
 - `down::` hierarchy that indicates this page should be considered a parent of the listed pages. 
 - `include::` Comma separated URL link of passed resources to be embedded at the end of the current link. 
-- `circle::` Peer pages that are associated but not hierartical. Order is irrelevant, but alphabetical is assumed.  
+- `circle::` Peer pages that are associated but not hierarchical. Order is irrelevant, but alphabetical is assumed.  
 
 ## Conventions 
 
