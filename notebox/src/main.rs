@@ -114,6 +114,15 @@ fn main() {
     dbg!(&yamlObj);
     dbg!(&yamlObj["aliases"]);
     dbg!(&yamlObj["public"]);
+    // Check if variable is true
+    if yamlObj["public"].as_bool().unwrap() {
+        println!("Public is true");
+        let write_result = fs::write("../src/notes/README.md", file_contents);
+        let written_file = match write_result {
+            Ok(file) => file,
+            Err(error) => panic!("Problem opening the file: {:?}", error),
+        };
+    }
 
     //println!("\nProcessed File HTML output:\n{}", yaml_test_result);
 }
