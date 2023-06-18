@@ -20,6 +20,7 @@ A tool to publish those notes here that are intended to be public facing.
 	- Notes marked `true` will have their whole body published along with metadata. 
 	- Notes marked `partial-public` will have any `:::{public} content :::` content blocks published and no metadata other than title. 
 	- Notes marked `partial-private` will have all content except for `:::{private} content :::` content blocks published and all metadata. 
+	- Notes marked `true` will also follow the `private` directives. 
 - `mainlink:` This note is referring to a URL as its primary subject. 
 - `go:` This link defines the page, it is intended to be a forwarding link. 
 - `isBasedOn:` This page is a direct other page and should be considered a replica or summary of that page. 
