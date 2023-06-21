@@ -28,6 +28,8 @@ A tool to publish those notes here that are intended to be public facing.
 - `aliases:` YAML list of other ways to refer to this page besides filename. 
 - `republish:` Designate a YAML list of TLDs or source list names which you wish to republish to. Processing of a republish event is up to the receiving site and may be an entirely new page or the absorption of the page into an existing page, or a denial. 
 - `tags:`  to add keywords in a YAML list.  
+- `moved-to:` Indicates this note file has been moved to a public-facing URL and that is the resource that should be accessed instead. 
+- `mobed-date:` Indicates the date at which this file was moved to the public-facing URL. It never occurs without `moved-to`. 
 
 ### Folder Structure 
 

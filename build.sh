@@ -1,0 +1,2 @@
+cd ./notebox
+cargo run

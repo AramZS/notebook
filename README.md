@@ -1,6 +1,6 @@
 ---
 aliases: ['Note Publisher', 'NotePub', 'NotePublisher', 'Notebook']
-public: true
+public: partial-public
 ---
 
 # Notebook
