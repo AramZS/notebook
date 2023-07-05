@@ -24,12 +24,12 @@ A tool to publish those notes here that are intended to be public facing.
 - `mainlink:` This note is referring to a URL as its primary subject. 
 - `go:` This link defines the page, it is intended to be a forwarding link. 
 - `isBasedOn:` This page is a direct other page and should be considered a replica or summary of that page. 
-- `date:` intended publishing time. 
+- `date:` intended publishing time. If none is given, it is considered to be have a value of "Now"
 - `aliases:` YAML list of other ways to refer to this page besides filename. 
 - `republish:` Designate a YAML list of TLDs or source list names which you wish to republish to. Processing of a republish event is up to the receiving site and may be an entirely new page or the absorption of the page into an existing page, or a denial. 
 - `tags:`  to add keywords in a YAML list.  
 - `moved-to:` Indicates this note file has been moved to a public-facing URL and that is the resource that should be accessed instead. 
-- `mobed-date:` Indicates the date at which this file was moved to the public-facing URL. It never occurs without `moved-to`. 
+- `moved-date:` Indicates the date at which this file was moved to the public-facing URL. It never occurs without `moved-to`. 
 
 ### Folder Structure 
 
